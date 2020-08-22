@@ -8,16 +8,16 @@ const Sidebar = () => {
 
   const { visible, color, height, width } = state;
 
-  const onVisibleChange = e => {
+  const onVisibleChange = (e) => {
     dispatch({ type: "changeVisible", visible: e.target.checked });
   };
 
-  const onColorChange = e => {
+  const onColorChange = (e) => {
     dispatch({ type: "changeColor", color: e.target.value });
   };
 
-  const handleHeightChange = e => {
-    let height = parseInt(e.target.value);
+  const handleHeightChange = (e) => {
+    let height = parseInt(e.target.value, 10);
     if (e.target.value === "") {
       height = 0;
     }
@@ -26,8 +26,11 @@ const Sidebar = () => {
     }
   };
 
-  const handleWidthChange = e => {
-    const width = parseInt(e.target.value);
+  const handleWidthChange = (e) => {
+    let width = parseInt(e.target.value, 10);
+    if (e.target.value === "") {
+      width = 0;
+    }
     if (width >= 0 && width < 1000) {
       dispatch({ type: "changeWidth", width });
     }
